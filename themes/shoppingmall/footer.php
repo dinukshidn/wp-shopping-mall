@@ -11,17 +11,17 @@
 			</div>
 		</div>
 		<div class="row footer-menu-section">
-			<div class="col-lg-8">
-				<!-- Footer Main menu -->
-				<div class="footer-menu">
-					<div class="footer-menu-wrap clearfix">
-						<?php if ( is_active_sidebar( 'footer-menu' )):
-							dynamic_sidebar( 'footer-menu' );
-						endif; ?>
+			<?php if ( is_active_sidebar( 'footer-menu' )): ?>
+				<div class="col-lg-8">
+					<!-- Footer Main menu -->
+					<div class="footer-menu">
+						<div class="footer-menu-wrap clearfix">
+							<?php dynamic_sidebar( 'footer-menu' ); ?>
+						</div>
 					</div>
+					<!-- Footer EOF main menu -->
 				</div>
-				<!-- Footer EOF main menu -->
-			</div>
+			<?php endif; ?>
 			<div class="col-lg-4">
 				<div class="contact-details">
 					<?php if ( is_active_sidebar( 'contact-details' )):

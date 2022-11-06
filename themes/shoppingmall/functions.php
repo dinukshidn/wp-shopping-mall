@@ -157,74 +157,39 @@ function scripts(){
 
 
 
+function kriesi_pagination($pages = '', $range = 2)
+{  
+     $showitems = ($range * 2)+1;  
 
-//****Location Section****//
+     global $paged;
+     if(empty($paged)) $paged = 1;
 
-function locationSection(){
-	$current_id= get_the_ID();
-	$longitude_latitude = get_post_meta($current_id, 'Longitude & Latitude', true); 
+     if($pages == '')
+     {
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages)
+         {
+             $pages = 1;
+         }
+     }   
 
-	$locationSection .= "<div id='map-container".$current_id."' class='map-container-wrapper'></div>";  
-	$locationSection .="<script type='text/javascript'>
+     if(1 != $pages)
+     {
+         echo "<div class='pagination'>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
 
-	var map".$current_id.";";
+         for ($i=1; $i <= $pages; $i++)
+         {
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+             {
+                 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+             }
+         }
 
-	$locationSection .= "function initialize".$current_id."() { ";
-
-	$locationSection .= "var assetsPath = ' ".get_template_directory_uri()."/assets/images/'; ";
-
-	$locationSection .= "
-
-	var options".$current_id." = {
-		center: new google.maps.LatLng(". $longitude_latitude."),
-
-		zoom: 9,
-		disableDefaultUI: false,
-		scrollwheel: false,
-		zoomControl: false,
-		mapTypeControl: false,  
-
-		styles: [{'featureType': 'water','elementType': 'geometry','stylers': [{'color': '#e9e9e9' },{'lightness': 17}]},{'featureType': 'landscape','elementType': 'geometry','stylers': [{'color': '#f5f5f5'},{'lightness': 20}]},{'featureType': 'road.highway','elementType': 'geometry.fill','stylers': [{'color': '#ffffff'},{'lightness': 17}]},{'featureType': 'road.highway','elementType': 'geometry.stroke','stylers': [{'color': '#ffffff'},{'lightness': 29},{'weight': 0.2}]},{'featureType': 'road.arterial','elementType': 'geometry','stylers': [{'color': '#ffffff'},{'lightness': 18}]},{'featureType': 'road.local','elementType': 'geometry','stylers': [{'color': '#ffffff'},{'lightness': 16}]},{'featureType': 'poi','elementType': 'geometry','stylers': [{'color': '#f5f5f5'},{'lightness': 21}]},{'featureType': 'poi.park','elementType': 'geometry','stylers': [{'color': '#dedede'},{'lightness': 21}]},{'elementType': 'labels.text.stroke','stylers': [{'visibility': 'on'},{'color': '#ffffff'},{'lightness': 16}]},{'elementType': 'labels.text.fill','stylers': [{'saturation': 36},{'color': '#333333'},{'lightness': 40}]},{'elementType': 'labels.icon','stylers': [{'visibility': 'off'}]},{'featureType': 'transit','elementType': 'geometry','stylers': [{'color': '#f2f2f2'},{'lightness': 19}]},{'featureType': 'administrative','elementType': 'geometry.fill','stylers': [{'color': '#fefefe'},{'lightness': 20}]},{'featureType': 'administrative','elementType': 'geometry.stroke','stylers': [{'color': '#fefefe'},{'lightness': 17},{'weight': 1.2}]}],
-
-		mapTypeControlOptions: {
-			style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-			position: google.maps.ControlPosition.TOP_CENTER
-		},
-
-		zoomControl: true,
-		zoomControlOptions: {
-			position: google.maps.ControlPosition.LEFT_CENTER
-		},
-
-		scaleControl: true,
-		streetViewControl: true,
-		streetViewControlOptions: {
-			position: google.maps.ControlPosition.LEFT_TOP
-		},
-
-		fullscreenControl: true
-
-	};
-
-	map".$current_id." = new google.maps.Map(document.getElementById('map-container".$current_id."'),options".$current_id.");
-
-	marker".$current_id." = new google.maps.Marker({
-		map:map".$current_id.",
-		animation: google.maps.Animation.DROP,
-		position: new google.maps.LatLng(". $longitude_latitude."),
-		icon: assetsPath + 'map-icon.png'
-	}); 
-
-		
-	}
-	setTimeout(function() { initialize".$current_id."(); }, 5000);
-	
-	";
-	$locationSection .="</script>";
-
-	return $locationSection;
+         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+         echo "</div>\n";
+     }
 }
-
-add_shortcode('location-Section', 'locationSection');
-
-//****EOF Location Section****//

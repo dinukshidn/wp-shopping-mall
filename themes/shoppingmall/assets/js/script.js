@@ -18,10 +18,10 @@ jQuery(document).ready(function() {
  
 
 
-    jQuery('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
+    // jQuery('.counter').counterUp({
+    //     delay: 10,
+    //     time: 1000
+    // });
 
     jQuery(".find-submit").click(function(){
     		jQuery(".close-submit").show();

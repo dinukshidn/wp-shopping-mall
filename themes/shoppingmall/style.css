@@ -137,6 +137,7 @@ ol li{
 
 img{
 	height: auto;
+	width: 100%;
 	max-width: 100%;
 	/*vertical-align: middle*/
 }
@@ -312,10 +313,11 @@ button{
 }
 
 #main-logo{
+	position: relative;
 }
 
 #main-logo a{
-	display: block;
+	display: inline-block;
 }
 
 .header-wrapper #main-logo a img{
@@ -564,6 +566,7 @@ button{
 footer{
 	position: relative;
 	padding: 24px 0 32px;
+	background-color: #f5f5f5;
 }
 
 .breadcrumbs{
@@ -670,11 +673,20 @@ footer{
 }
 
 .contact-details .widget_block a{
-	padding: 6px;
 	display: inline-block;
+	padding: 6px;
+	padding-left: 30px;
+	min-height: 28px;
+	line-height: 28px;
+	background-repeat: no-repeat;
+	background-position: 0;
 }
 
 .contact-details .widget_block a.mobile-link{
+	background-image: url(assets/images/icon-mobile.svg);
+	background-position: left -2px center;
+	background-size: 23px 29px;
+	font-weight: 700;
 	color: #ac8c4c;
 }
 
@@ -682,6 +694,13 @@ footer{
 	color: #333;
 }
 
+.contact-details .widget_block a.email-link{
+  background-image: url(assets/images/icon-mail.svg);
+  background-size: 22px 22px;
+	max-width: 100%;
+	overflow: hidden;
+	background-position: 0px 9px;
+}
 .contact-details .widget_block a.email-link span:hover{
 	border-bottom: 1px solid;
 	border-bottom-color: currentcolor;
@@ -700,29 +719,6 @@ footer{
 	border-top: 1px solid #52524e;
 }
 
-#menu-footer-bottom-menu{
-	column-count: 1;
-	width: auto;
-}
-
-#menu-footer-bottom-menu li{
-	display: inline-block;
-	padding: 0 7px 0 2px;
-	line-height: 1;
-}
-
-#menu-footer-bottom-menu li:first-child{
-	border-right: 2px solid #fff;
-	padding-left: 0
-}
-
-#menu-footer-bottom-menu li a{
-	font-size: 14px;
-	display: block;
-	line-height: 1.2;
-	color: #fff;
-}
-
 .contact-details .widget_text,
 .contact-details .widget_text{
 	float: left;
@@ -738,11 +734,10 @@ footer{
 	color: #333
 }
 
-
 #copyright{
 	text-align: left;
 	font-size: 12px;
-	padding: 6px 0;
+	padding: 15px 0;
 	color: #8a8787;
 
 }
@@ -754,6 +749,7 @@ footer{
 #copyright a:hover{
 	color: #ac8c4c;
 }
+
 /*========== EOF Footer ==========*/
 
 
@@ -882,9 +878,134 @@ footer{
 .desc-container{
 	margin-top: -72px;
 	padding: 16px 24px;
-	box-shadow: 400px 0 #fff;
+	box-shadow: 900px 0 #fff;
 	position: relative;
 	background: #fff;
+}
+
+#filter-row{
+	margin: 30px 0;
+}
+
+#listing-shop-wrapper{
+	/*background: red;*/
+}
+
+.listing-shop-wrapper{
+	background: #fff;
+	margin-bottom: 25px;
+}
+
+.listing-shop-boxs{
+	margin-bottom: 30px;
+}
+
+.listing-shop-boxs a.shops-box{
+	border: 1px solid #f3f3f3;
+	box-shadow: 6px 6px #e4e4e4;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0,0,0,.125);
+	transition: all 0.5s ease 0s;
+}
+
+.listing-shop-boxs a.shops-box:hover {
+  border-color: #d0af6d;
+  box-shadow: 6px 6px #d0af6d;
+  transition: all 0.5s ease 0s;
+}
+
+.listing-shop-boxs .shops-logo-wrapper{
+	width: 100%;
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+
+.listing-shop-boxs .shops-logo-wrapper img.shops-logo {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	transition: all 0.5s ease 0s;
+}
+
+.listing-shop-boxs a.shops-box:hover  img.shops-logo {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: all 0.5s ease 0s;
+}
+
+.listing-shop-boxs a.shops-box .shops-name{
+  padding: 16px;
+  position: relative;
+}
+
+.listing-shop-boxs a.shops-box .shops-name:after {
+  content: "";
+  width: 2px;
+  background: #d0af6d;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.listing-shop-boxs a.shops-box .shops-name:after {
+  width: auto;
+  height: 1px;
+  background: #b2b2b2;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  top: auto;
+}
+
+.listing-shop-boxs a.shops-box .shops-name h4{
+  line-height: 1.4;
+  font-weight: 700;
+	font-size: 21px;
+	letter-spacing: 0.8;
+	text-transform: none;
+	color: #1c1c1c;
+	margin: 0 0 13px;
+}
+
+.listing-shop-boxs a.shops-box .shops-details{
+	display: block;
+	font-size: 21px;
+	color: #000;
+	margin-bottom: 16px;
+}
+
+.listing-shop-boxs a.shops-box .shops-details-wrap{
+	padding: 16px;
+}
+
+.listing-shop-boxs .shops-details-wrap .shops-details{
+	background-position: left top 4px;
+	background-repeat: no-repeat;
+	background-size: 22px;
+	padding-left: 28px;
+}
+
+.listing-shop-boxs .shops-details-wrap .shops-location{
+  background-image: url(assets/images/location.svg);
+}
+
+.listing-shop-boxs .shops-details-wrap .shops-operatinghr{
+  background-image: url(assets/images/time.svg);
+  background-size: 21px;
+	background-position: left top 5px;
 }
 /*========== EOF Home Page ==========*/
 

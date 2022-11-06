@@ -4,7 +4,7 @@ Template Name: Home Page
 */
 
 get_header();
-	//$current_page_id = get_the_ID();
+	$current_page_id = get_the_ID();
 	if ( have_posts() ) : 
 		while ( have_posts() ) : the_post(); 
 			$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
@@ -29,5 +29,75 @@ get_header();
 
 		<?php	
 		endwhile;
-	endif; 
-get_footer();
+	endif; ?>
+
+	<section id="filter-row">
+		<div class='container'>	
+			<div class="filter-wrapper row"></div>
+		</div>
+	</section>
+
+
+	<section id="listing-shop-wrapper">
+		<div class='container'>	
+			<div class="listing-shop-wrapper row">
+				<?php 
+					// $args = array(
+					// 	'child_of' => 11, 
+					// 	'orderby' => 'term_id'
+					// );
+					// $categories = get_categories( $args );
+					// foreach($categories as $category){ 
+					// $cat_id= $category->term_id;
+				?>
+				<?php 
+
+				$args = array(
+					'post_type' => 'post',
+					'orderby' => 'name', 
+					'order' => 'ASC',
+					'cat' => 11,
+					'numberposts' => -1
+				);
+
+				 query_posts($args); ?>
+
+				<?php if (have_posts()) : while (have_posts()) : the_post();
+					//foreach ( $posts as $post ) : setup_postdata( $post ); 
+
+					$postID = $post->ID;
+					$shopLogo = get_post_meta($postID, 'Shop Logo', true); 
+					$location = get_post_meta($postID, 'Location', true); 
+					$operatingHours = get_post_meta($postID, 'Operating Hours', true); ?>
+
+
+				<?php //$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
+					<div class="listing-shop-boxs col-md-6 col-lg-3">	
+						<a class="shops-box" href="<?php the_permalink() ?>">
+							<div class="shops-logo-wrapper">
+								<img class="shops-logo" alt="<?php the_title() ?>" src="<?php echo $shopLogo;?>" width="600" height="450">
+							</div>
+
+							<div class="shops-name">
+								<h4><?php the_title() ?></h4>
+							</div>
+
+							<div class="shops-details-wrap">
+								<p class="shops-details shops-location"><?php echo $location; ?></p>
+								<p class="shops-details shops-operatinghr"><?php echo $operatingHours; ?></p>
+							</div>
+						</a>
+					</div>
+
+				<?php //endforeach; 
+				endwhile; endif; ?>
+				<div id="tesr"><?php custom_pagination(); ?></div>
+				<?php wp_reset_postdata(); ?>
+				<?php // } ?>
+			</div>
+
+		</div>
+	</section>
+
+
+<?php get_footer();
