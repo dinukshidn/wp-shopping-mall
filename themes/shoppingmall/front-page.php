@@ -52,19 +52,26 @@ get_header();
 				?>
 				<?php 
 
+				//$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+				if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
+				elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
+				else { $paged = 1; }
+
 				$args = array(
 					'post_type' => 'post',
 					'orderby' => 'name', 
 					'order' => 'ASC',
 					'cat' => 11,
-					'numberposts' => -1
+					'posts_per_page' => 5,
+        			'paged' => $paged,
+
 				);
 
-				 query_posts($args); ?>
+				$posts = new WP_Query( $args ); ?>
 
-				<?php if (have_posts()) : while (have_posts()) : the_post();
+				<?php if ( $posts->have_posts()) : while ( $posts->have_posts()) :  $posts->the_post();
 					//foreach ( $posts as $post ) : setup_postdata( $post ); 
-
+					//global $post;
 					$postID = $post->ID;
 					$shopLogo = get_post_meta($postID, 'Shop Logo', true); 
 					$location = get_post_meta($postID, 'Location', true); 
@@ -90,8 +97,13 @@ get_header();
 					</div>
 
 				<?php //endforeach; 
-				endwhile; endif; ?>
-				<div id="tesr"><?php custom_pagination(); ?></div>
+				endwhile; 
+			endif; ?>
+				<div id="pagination">
+					<?php if (function_exists("pagination")) {
+						pagination($posts->max_num_pages); 
+					} ?>
+				</div>
 				<?php wp_reset_postdata(); ?>
 				<?php // } ?>
 			</div>
