@@ -5,64 +5,65 @@
 
 get_header();
 	$current_category = single_cat_title("", false); ?>
-	<div id="inner-pages" class="center-wrapper clearfix topspace">
-		<div class="inner-wrapper">
-			<div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
-				<?php if(function_exists('bcn_display'))
-				{
-				bcn_display();
-				}?>
-			</div>
-			<div class="page-title">
-				<h1><?php echo ($current_category); ?></h1>
-			</div>
-			<div class="pages-content-wrapper cms-page clearfix">
-				<div class="news-wrapper float-l clearfix">
-					<?php if (have_posts()) : while (have_posts()) : the_post();
-						$addclass ='';?>
-						<div class="news-items clearfix">
-							<?php if(has_post_thumbnail()) { ?>
+	<main id="header-banner"  class="topspace" style="background-image: url(<?php if (function_exists('z_taxonomy_image_url')) echo z_taxonomy_image_url(); ?>) !important;background-repeat:no-repeat;background-size: cover;background-position:center;">
+	</main>
 
-								<div class="news-image-wrapper float-l clearfix">
-									<?php $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
-									<a class="news-image" href="<?php the_permalink() ?>" style="background-image: url(<?php echo $src[0]; ?> ) !important;background-repeat:no-repeat;background-size: cover;background-position:center;">
-									</a>
-								</div>
-							<?php }else{ ?>
-								<?php $addclass = 'full-width-row'; 
-								?>
-							<?php } ?>
-							<div class="news-details clearfix <?php  echo $addclass; ?> ">
-								<div class="news-details-wrapper">
-									<div class="news-title-wrapper">
-										<h2>
-											<a href="<?php the_permalink() ?>"><?php the_title() ?></a>
-										</h2>
-									</div>
-									<div class="date-and-formats">
-										<div class="date-box updated"><?php the_time('dS F Y'); ?></div>
-									</div>
-									<div class="news-details-desc-wrap">
-										<?php echo get_the_excerpt(); ?>
-									</div>
-								</div>
+	<section class='cms-page'>
+		<div class='container'>
+		<div class="row desc-container">
+		<h1><?php  echo($current_category); ?></h1>
+		</div>
+		</div>
+	</section>
+
+
+	<div id="inner-pages" class="container">
+		<div class="row">
+
+			<div class="post-wrapper col-lg-8">
+				<?php if (have_posts()) : while (have_posts()) : the_post();
+				$addclass ='';?>
+				<div class="post-items row">
+					<?php if(has_post_thumbnail()) { ?>
+
+					<div class="post-image-wrapper col-lg-5">
+						<?php $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
+						<a class="post-image" href="<?php the_permalink() ?>" style="background-image: url(<?php echo $src[0]; ?> ) !important;background-repeat:no-repeat;background-size: cover;background-position:center;">
+						</a>
+					</div>
+					<?php }else{ ?>
+						<?php $addclass = 'col-lg-12'; ?>
+					<?php } ?>
+
+					<div class="post-details col-lg-7 <?php  echo $addclass; ?> ">
+						<div class="post-details-wrapper">
+							<div class="post-title-wrapper">
+								<h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
 							</div>
-							<div class="news-bottom-row float-l clearfix">
-								<div class="share-icon float-l clearfix">
-									<?php echo do_shortcode('[addthis tool="addthis_inline_share_toolbox_eiti"]'); ?>
-								</div>
-								<div class="read-more-btn float-r clearfix">
-									<a href="<?php the_permalink() ?>">Continue Reading</a>
-								</div>
+							<div class="date-and-formats">
+								<div class="date-box updated"><?php the_time('dS F Y'); ?></div>
+							</div>
+							<div class="post-details-desc-wrap">
+								<?php echo get_the_excerpt(); ?>
 							</div>
 						</div>
-					<?php 	endwhile; endif;
-						wp_reset_postdata(); ?>
+					</div>
+					<div class="post-bottom">
+						<div class="share-icon float-start">
+							<?php echo do_shortcode('[addthis tool="addthis_inline_share_toolbox_714f"]'); ?>
+						</div>
+						<div class="read-more-btn float-end">
+							<a class="btn btn-primary " role="button" href="<?php the_permalink() ?>">Continue Reading</a>
+						</div>
+					</div>
 				</div>
-				<div class="news-side-bar float-l clearfix">
-					<div id="news-sidebar"><?php get_sidebar('news'); ?></div>
-				</div>
+				<?php 	endwhile; endif;
+				wp_reset_postdata(); ?>
 			</div>
+			<div class="post-side-bar col-lg-4">
+				<div id="post-sidebar"><?php get_sidebar('news'); ?></div>
+			</div>
+
 		</div>	
 	</div>
 

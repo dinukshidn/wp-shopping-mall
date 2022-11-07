@@ -9,7 +9,6 @@ get_header();
 		while ( have_posts() ) : the_post(); 
 			$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
 			<main id="header-banner"  class="topspace" style="background-image: url(<?php echo $src[0]; ?> ) !important;background-repeat:no-repeat;background-size: cover;background-position:center;">
-
 				<div class="banner-content">
 					<div class="container">
 						<div class="row page-title">
