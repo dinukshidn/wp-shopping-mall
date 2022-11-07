@@ -5,29 +5,25 @@
  */
 
 get_header();
-	if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<section class="breadcrumbs topspace" typeof="BreadcrumbList" vocab="http://schema.org/">
-			<div class="center-wrapper">
-				<div class="center-inner-wrapper">
-					<?php if(function_exists('bcn_display'))
-					{
-					bcn_display();
-					}?>
-				</div>
-			</div>
-		</section>
-		<section id="inner-pages" class="without-banner cms-page clearfix">
-			<div class="center-wrapper">
-				<div class="center-inner-wrapper">
-					<div class="page-title">
-						<h1><?php the_title() ?></h1>
+	if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+		$src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full'); ?>
+		<main id="header-banner" class="topspace parallax-window" data-parallax="scroll" data-image-src="<?php echo $src[0]; ?>">
+				<div class="banner-content">
+					<div class="container">
+						<div class="row page-title">
+							<h1><?php the_title() ?></h1>
+						</div>
 					</div>
-					<div class="pages-content-wrapper clearfix">
+				</div>
+			</main>
+
+			<section class='cms-page cms-content-top'>
+				<div class='container '>
+					<div class="desc-container">
 						<?php the_content(); ?>
 					</div>
 				</div>
-			</div>	
-		</section>	
+			</section>	
 			<?php
 	endwhile;
 	endif; ?>

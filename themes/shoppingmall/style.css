@@ -106,7 +106,7 @@ a:hover{
 
 p{
 	font-family: inherit;
-	font-size: 20px;
+	font-size: 18px;
 	margin: 0 0 23px;
 	line-height: 1.4;
 	/*line-height: 1.2;*/
@@ -196,7 +196,7 @@ hr{
 }
 
 .topspace{
-	margin-top: 87px;
+	margin-top: 92px;
 }
 
 .bottomspace{
@@ -520,7 +520,7 @@ button{
 	position: relative;
 	height: 66%;
 	/*min-height: 485px;*/
-	min-height: 570px;
+	min-height: 510px;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -544,10 +544,8 @@ button{
 
 .page-title h1{
 	margin: 0;
-	margin: 0;
 	text-shadow: 4px 2px 6px rgba(0,0,0,.2);
 	letter-spacing: 5.2px;
-	text-align
 }
 
 /*========== EOF Masthead ==========*/
@@ -556,6 +554,11 @@ button{
 
 .cms-page{
 	background-color: #fff;
+}
+
+.cms-page.cms-content-top .container:before{
+	content: "";
+	display: table;
 }
 
 .desc-container{
@@ -571,7 +574,7 @@ button{
 /*========== Footer ==========*/
 footer{
 	position: relative;
-	padding: 24px 0 32px;
+	padding: 24px 0 20px;
 	background-color: #f5f5f5;
 }
 
@@ -584,8 +587,6 @@ footer{
 	color: #000;
 }
 
-
-
 .footer-menu h2.widgettitle{
 	text-transform: uppercase;
 	color: #000;
@@ -594,7 +595,6 @@ footer{
 	font-weight: 400;
 	margin: 0;
 }
-
 
 .footer-menu-wrap{}
 
@@ -693,6 +693,7 @@ footer{
 	background-size: 23px 29px;
 	font-weight: 700;
 	color: #ac8c4c;
+	font-size: 17px;
 }
 
 .contact-details .widget_block a.mobile-link:hover{
@@ -704,8 +705,10 @@ footer{
   background-size: 22px 22px;
 	max-width: 100%;
 	overflow: hidden;
-	background-position: 0px 9px;
+	background-position: 0px 11px;
+	font-size: 17px;
 }
+
 .contact-details .widget_block a.email-link span:hover{
 	border-bottom: 1px solid;
 	border-bottom-color: currentcolor;
@@ -744,7 +747,6 @@ footer{
 	font-size: 12px;
 	padding: 15px 0;
 	color: #8a8787;
-
 }
 
 #copyright a{
@@ -756,11 +758,6 @@ footer{
 }
 
 /*========== EOF Footer ==========*/
-
-
-
-
-
 
 /*========== Search Page ==========*/
 /*.search-form-container .search-submit{
@@ -976,7 +973,6 @@ footer{
 
 .listing-shop-boxs a.shops-box .shops-details{
 	display: block;
-	font-size: 21px;
 	color: #000;
 	margin-bottom: 16px;
 }
@@ -986,7 +982,7 @@ footer{
 }
 
 .listing-shop-boxs .shops-details-wrap .shops-details{
-	background-position: left top 4px;
+	background-position: left top 2px;
 	background-repeat: no-repeat;
 	background-size: 22px;
 	padding-left: 28px;
@@ -999,9 +995,8 @@ footer{
 .listing-shop-boxs .shops-details-wrap .shops-operatinghr{
   background-image: url(assets/images/time.svg);
   background-size: 21px;
-	background-position: left top 5px;
+	background-position: left top 2px;
 }
-
 
 	/*========== Pagination Section ==========*/	
 	#pagination{
@@ -1026,7 +1021,7 @@ footer{
 
 	#pagination .pagination span, 
 	.pagination a {
-		font-size: 20px;
+		font-size: 16px;
 		margin: 2px 2px 2px 0;
 		padding:6px 9px 5px 9px;
 		text-decoration:none;
@@ -1052,13 +1047,10 @@ footer{
 	  border-color: #000;
 	}
 	/*========== EOF Pagination Section ==========*/	
-
-
 /*========== EOF Home Page ==========*/
 
 
 /*========== Articles Pages ==========*/
-
 .date-and-formats .date-box, .post-date {
 	background: rgba(0, 0, 0, 0) url('assets/images/cal_icon.svg') no-repeat left center;
 	color: #b3b2b2;
@@ -1162,10 +1154,8 @@ footer{
 	list-style-type:none;
 }
 
-
-
 #recent-post{
-margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .post-side-bar #recent-post .widget-title {
@@ -1226,19 +1216,11 @@ margin-bottom: 40px;
 	border-bottom: none;
 }
 
-#category-posts-2-internal .cpwp-wrap-text p{
+#post-sidebar #category-posts-2-internal .cpwp-wrap-text-stage p,
+#recent-post #category-posts-2-internal .cpwp-wrap-text-stage p{
 	margin-bottom: 0;
 	font-size: 15px;
 }
-
-
-/*========== EOF post Single Pages ==========*/
-.single-post-image{
-min-height: 450px;
-width: 100%;
-margin-bottom: 15px;
-}
-/*========== EOF post Single Pages ==========*/
 /*========== EOF Articles Pages ==========*/
 
 
@@ -1246,6 +1228,7 @@ margin-bottom: 15px;
 .post-container-wrap{
 	background-image: linear-gradient(180deg,#f3f3f3 45%,hsla(0,0%,100%,0));
 }
+
 .post-desc-section{
 	margin-top: -72px;
 	padding: 30px 95px  0 0;
@@ -1267,7 +1250,7 @@ margin-bottom: 15px;
  }
 
 .post-details-block-title{
-	margin: 30px 0;
+	margin: 0 0 30px;
 }
 
 .post-details-block-title,
@@ -1275,14 +1258,25 @@ margin-bottom: 15px;
  	position: relative;
 }
 
+.post-details-block-content{
+	margin-bottom: 40px;
+}
+
 .post-details-block-title h1{
  	font-size: 68px;
  	margin-bottom: 15px;
+ 	margin-top: 0 !important;
 }
 
 #shopes-gallery{
 	position: relative;
 	margin: 55px 0;
+}
+
+#shopes-gallery h2{
+	letter-spacing: 5px;
+	font-size: 50px;
+	margin-bottom: 30px
 }
 
 #shops-sidebar{
@@ -1304,13 +1298,29 @@ margin-bottom: 15px;
 	font-size: 17px;
 }
 
+#related-post{
+	margin: 100px 0 50px;
+}
 
-.relatedposts {width: 640px; margin: 0 0 20px 0; float: left; font-size: 12px;}
-.relatedposts h4 {font-size: 20px; margin: 0 0 5px 0; }
-.relatedthumb {margin: 0 1px 0 1px; float: left; }
-.relatedthumb img {margin: 0 0 3px 0; padding: 0;}
-.relatedthumb a {color :#333; text-decoration: none; display:block; padding: 4px; width: 150px;}
-.relatedthumb a:hover {background-color: #ddd; color: #000;}
+#related-post h3{
+	letter-spacing: 5px;
+	font-size: 50px;
+	margin-bottom: 30px
+}
+
+.related-thumbnail.listing-shop-boxs a.shops-box .shops-name h4{
+	margin-bottom: 0;
+}
+
+.related-thumbnail.listing-shop-boxs .shops-name span{
+	font-size: 14px;
+	color: #5e5b5b;
+}
+
+.related-thumbnail.listing-shop-boxs a.shops-box .shops-name{
+	padding-bottom: 26px;
+}
+
 /*========== EOF Shopes Detail page ==========*/
 
 /*========== 404 Page ==========*/
@@ -1321,18 +1331,6 @@ margin-bottom: 15px;
 
 
 /*==========Responsive Common css ==========*/
-button#responsive-menu-button {
-  z-index: 999999999 !important;
-  background: transparent !important;
-  top: 25px !important
-}
-
-.responsive-menu-inner, 
-.responsive-menu-inner:before, 
-.responsive-menu-inner:after{
-	background-color: #000 !important;
-}
-
 /*========== EOF Responsive Common css ==========*/
 
 /*==========  Non-Mobile First Method  ==========*/
@@ -1371,7 +1369,7 @@ button#responsive-menu-button {
 	}
 
 	h1,h2,h3,h4,h5,h6{
-		text-align: center;
+		
 	}
 
 	p{

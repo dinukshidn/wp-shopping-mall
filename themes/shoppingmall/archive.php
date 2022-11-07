@@ -5,12 +5,12 @@
 
 get_header();
 	$current_category = single_cat_title("", false); ?>
-	<main id="header-banner"  class="topspace" style="background-image: url(<?php if (function_exists('z_taxonomy_image_url')) echo z_taxonomy_image_url(); ?>) !important;background-repeat:no-repeat;background-size: cover;background-position:center;">
-	</main>
 
-	<section class='cms-page'>
+	<main id="header-banner" class="topspace parallax-window" data-parallax="scroll" data-image-src="<?php if (function_exists('z_taxonomy_image_url')) echo z_taxonomy_image_url(); ?>"></main>
+
+	<section class='cms-page cms-content-top'>
 		<div class='container'>
-			<div class="row desc-container">
+			<div class="row desc-container page-title">
 				<h1><?php  echo($current_category); ?></h1>
 			</div>
 		</div>

@@ -43,17 +43,6 @@ register_sidebar( array(
 	'after_title'   => '</h2>',
 ));
 
-// register_sidebar( array(
-// 	'name'          => __( 'Shops Sidebar', 'shoppingmall' ),
-// 	'id'            => 'shop-sidebar',
-// 	'description'   => __( 'Add widgets here to appear in your sidebar.', 'shoppingmall' ),
-// 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-// 	'after_widget'  => '</div>',
-// 	'before_title'  => '<h2 class="widget-title">',
-// 	'after_title'   => '</h2>',
-// ));
-
-
 
 add_action('init', 'add_excerpt_pages');
 	function add_excerpt_pages() {
