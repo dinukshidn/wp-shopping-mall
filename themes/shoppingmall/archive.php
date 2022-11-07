@@ -10,12 +10,11 @@ get_header();
 
 	<section class='cms-page'>
 		<div class='container'>
-		<div class="row desc-container">
-		<h1><?php  echo($current_category); ?></h1>
-		</div>
+			<div class="row desc-container">
+				<h1><?php  echo($current_category); ?></h1>
+			</div>
 		</div>
 	</section>
-
 
 	<div id="inner-pages" class="container">
 		<div class="row">

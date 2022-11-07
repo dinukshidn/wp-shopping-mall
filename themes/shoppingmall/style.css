@@ -58,6 +58,7 @@ h1,h2,h3,h4,h5,h6{
 	line-height: 1.2;
 	color: #000;
 	text-transform: uppercase;
+	letter-spacing: 1.2px;
 }
 
 h1 {
@@ -1231,8 +1232,6 @@ margin-bottom: 40px;
 }
 
 
-
-
 /*========== EOF post Single Pages ==========*/
 .single-post-image{
 min-height: 450px;
@@ -1240,10 +1239,48 @@ width: 100%;
 margin-bottom: 15px;
 }
 /*========== EOF post Single Pages ==========*/
-
-
 /*========== EOF Articles Pages ==========*/
 
+
+/*========== Shopes Detail page ==========*/
+.post-container-wrap{
+	background-image: linear-gradient(180deg,#f3f3f3 45%,hsla(0,0%,100%,0));
+}
+.post-desc-section{
+	margin-top: -72px;
+	padding: 30px 95px  0 0;
+	/*background: #fff;*/
+	position: relative;
+}
+
+.post-desc-section:before {
+  content: "";
+  display: block;
+  width: 200%;
+  position: absolute;
+  height: auto;
+  top: 0;
+  right: 0;
+  bottom: -72px;
+  box-shadow: -5px 0 0 #fff;
+  background-image: linear-gradient(180deg,#fff 70%,hsla(0,0%,100%,0));
+ }
+
+.post-details-block-title{
+	margin: 30px 0;
+}
+
+.post-details-block-title,
+.post-details-block-content{
+ 	position: relative;
+}
+
+.post-details-block-title h1{
+ 	font-size: 68px;
+ 	margin-bottom: 15px;
+}
+
+/*========== EOF Shopes Detail page ==========*/
 
 /*========== 404 Page ==========*/
 /*========== EOF 404 Page ==========*/
