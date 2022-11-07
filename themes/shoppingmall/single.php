@@ -8,6 +8,8 @@ get_header(); ?>
     $category_id = $categories[0]->cat_ID; 
     $category_name = get_cat_name($category_id);
     $shopGallery = get_post_meta($postID, 'Shop Gallery', true);
+    $shopLogo = get_post_meta($postID, 'Shop Logo', true); 
+    $location = get_post_meta($postID, 'Location', true);
 ?>
 <?php if( have_posts() ) : while ( have_posts() ) : the_post();
     
@@ -55,6 +57,46 @@ get_header(); ?>
         </section>
     <?php } ?>
 <?php endwhile; endif; ?>
+<?php if(in_category('11')){  ?>
+    <section id="related-post">
+        <div class="container">
+            <div class="row related_posts">
+                <h3>You Might Also Like</h3>
+                <?php 
+                    $RelatedPosts = new WP_Query( 
+                        array(
+                            'cat' => 11,
+                            'orderby' => 'rand', 
+                            'posts_per_page' => '3'
+                        ));
+
+                    if ($RelatedPosts->have_posts()) : while ( $RelatedPosts->have_posts()) :  $RelatedPosts->the_post(); ?>                
+                        <div class="related-thumbnail listing-shop-boxs col-md-4 mb-3">
+                            <a class="shops-box" href="<?php the_permalink() ?>">
+                                <div class="shops-logo-wrapper">
+                                    <img class="shops-logo" alt="<?php the_title() ?>" src="<?php echo $shopLogo;?>" width="600" height="450">
+                                    </div>
+
+                                <div class="shops-name">
+                                    <h4><?php the_title() ?></h4>
+                                    <span><?php echo $category_name;?></span>
+                                </div>
+
+                                <div class="shops-details-wrap">
+                                    <p class="shops-details shops-location"><?php echo $location; ?></p>
+                                </div>
+                            </a>
+                        </div>
+                <?php endwhile; else : endif;
+                wp_reset_postdata(); ?>
+            </div>
+        </div>
+    </section>
+<?php } ?>
+
+
+
+
 
 <?php 
 get_footer(); ?>
