@@ -12,21 +12,26 @@ $category_id = $categories[0]->cat_ID;
 if(in_category('11')){  ?>
 
 <div id="shops-sidebar">
-	<div class="ssidebar-section">
-		<?php if($location != ''){ ?>
-		    <h4>Location</h4>
-		    <p class="shops-location"><?php echo $location; ?></p>
-		<?php } ?>
-
-		<?php if($operatingHours != ''){ ?>
-		    <h4>Operating Hours</h4>
-		    <p class="shops-operatingHours"><?php echo $operatingHours; ?></p>
-		<?php } ?>
-		<div class="contact-details">
-			<?php if ( is_active_sidebar( 'contact-details' )):
-			dynamic_sidebar( 'contact-details' );
-			endif; ?>
-		</div>			
+	<div class="sidebar-section">
+		<div class="sidebar-inner-txt">
+			<?php if($location != ''){ ?>
+			    <h4>Location</h4>
+			    <p class="shops-location"><?php echo $location; ?></p>
+			<?php } ?>
+		</div>
+		<div class="sidebar-inner-txt">
+			<?php if($operatingHours != ''){ ?>
+			    <h4>Operating Hours</h4>
+			    <p class="shops-operatingHours"><?php echo $operatingHours; ?></p>
+			<?php } ?>
+		</div>
+		<div class="sidebar-inner-txt">
+			<div class="contact-details">
+				<?php if ( is_active_sidebar( 'contact-details' )):
+				dynamic_sidebar( 'contact-details' );
+				endif; ?>
+			</div>			
+		</div>
 	</div>
 </div>
 <?php }else{ ?>

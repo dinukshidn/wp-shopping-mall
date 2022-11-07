@@ -3,9 +3,11 @@
 
 get_header(); ?>
 <?php 
+    $postID = $post->ID;
     $categories = get_the_category();
     $category_id = $categories[0]->cat_ID; 
     $category_name = get_cat_name($category_id);
+    $shopGallery = get_post_meta($postID, 'Shop Gallery', true);
 ?>
 <?php if( have_posts() ) : while ( have_posts() ) : the_post();
     
@@ -42,6 +44,16 @@ get_header(); ?>
             </div>
         </div>
     </section>
+    <?php if($shopGallery != ''){ ?>
+        <section  id="shopes-gallery">
+            <div class="container">
+                <h2>Gallery</h2>
+                <div class="row gallery-sec">
+                    <?php echo do_shortcode($shopGallery); ?>
+                </div>
+                </div>
+        </section>
+    <?php } ?>
 <?php endwhile; endif; ?>
 
 <?php 

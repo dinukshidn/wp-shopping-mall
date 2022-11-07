@@ -106,7 +106,7 @@ a:hover{
 
 p{
 	font-family: inherit;
-	font-size: 18px;
+	font-size: 20px;
 	margin: 0 0 23px;
 	line-height: 1.4;
 	/*line-height: 1.2;*/
@@ -663,8 +663,7 @@ footer{
 .contact-details h2{
 	text-transform: uppercase;
 	color: #000;
-	font-size: 1.143rem;
-	font-family: JosefinSans,sans-serif;
+	font-size: 18px;
 	font-style: normal;
 	font-weight: 400;
 }
@@ -1280,6 +1279,29 @@ margin-bottom: 15px;
  	margin-bottom: 15px;
 }
 
+#shopes-gallery{
+	position: relative;
+	margin: 55px 0;
+}
+
+#shops-sidebar{
+	margin: 30px 0;
+}
+
+#shops-sidebar .sidebar-inner-txt{
+	margin-top: 35px;
+}
+
+#shops-sidebar h4,
+#shops-sidebar .contact-details h2{
+	font-size: 22px;
+	text-transform: none;
+	font-weight: 700;
+}
+
+#shops-sidebar p{
+	font-size: 17px;
+}
 /*========== EOF Shopes Detail page ==========*/
 
 /*========== 404 Page ==========*/
