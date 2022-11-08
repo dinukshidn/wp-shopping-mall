@@ -1,14 +1,4 @@
 <?php get_header();?>
-	<section class="breadcrumbs topspace" typeof="BreadcrumbList" vocab="http://schema.org/">
-		<div class="center-wrapper">
-			<div class="center-inner-wrapper">
-				<?php if(function_exists('bcn_display'))
-				{
-				bcn_display();
-				}?>
-			</div>
-		</div>
-	</section>
 		<section id="inner-pages" class="without-banner cms-page clearfix">
 			<div class="center-wrapper">
 				<div class="center-inner-wrapper">
