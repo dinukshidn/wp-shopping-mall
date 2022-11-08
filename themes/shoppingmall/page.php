@@ -18,8 +18,8 @@ get_header();
 			</main>
 
 			<section class='cms-page cms-content-top'>
-				<div class='container '>
-					<div class="desc-container">
+				<div class='container'>
+					<div class="desc-container row">
 						<?php the_content(); ?>
 					</div>
 				</div>

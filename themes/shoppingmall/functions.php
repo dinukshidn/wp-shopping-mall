@@ -56,17 +56,11 @@ add_action('init', 'add_excerpt_pages');
 */
 
 function styles(){
-
-
 	// Load the Internet Explorer 8 specific stylesheet.
 	wp_enqueue_style( 'theme-ie8', get_template_directory_uri() . '/css/ie8.css', array(), '20160816' );
 	// Load the Internet Explorer 9 specific stylesheet.
 	wp_enqueue_style( 'theme-ie9', get_template_directory_uri() . '/css/ie9.css', array(), '20160816' );
 	wp_register_style( 'style', get_template_directory_uri() . '/style.css', array(), '20160411', 'all'); /*style css*/
-
-	
-	
-	
 
 	wp_enqueue_style( 'theme-ie8');
 	wp_enqueue_style( 'theme-ie9');
@@ -74,32 +68,26 @@ function styles(){
 }
 
 function scripts(){ 
-	//<!-- captcha js files -->
-
-	// wp_register_script( 'parallax', get_template_directory_uri() . '/assets/js/parallax.min.js', '', '', true ); /*parallax js */
 	wp_register_script( 'custom', get_template_directory_uri() . '/assets/js/script.js', '', '', true ); /*custom js */
+	wp_register_script( 'weather', get_template_directory_uri() . '/assets/js/weather.js', '', '', true ); /*weather js */
 
-
-	// wp_enqueue_script( 'parallax' );
 	wp_enqueue_script( 'custom' );
+	wp_enqueue_script( 'weather' );
 }
 
 	add_action( 'wp_enqueue_scripts', 'scripts', 0 );
 	add_action( 'wp_enqueue_scripts', 'styles' );
 
-
-	//  Custom pagination function 
+	//******************** Custom pagination function ********************//
 	
     function pagination($pages = '', $range = 4){
         $showitems = ($range * 2)+1;
         global $paged;
         if(empty($paged)) $paged = 1;
-        if($pages == '')
-        {
+        if($pages == ''){
             global $wp_query;
             $pages = $wp_query->max_num_pages;
-            if(!$pages)
-            {
+            if(!$pages){
                 $pages = 1;
             }
         }
@@ -107,10 +95,8 @@ function scripts(){
             echo "<nav aria-label='Page navigation example'>  <ul class='pagination justify-content-center'> <span>Page ".$paged." of ".$pages."</span>";
             if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; First</a>";
             if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo; Previous</a>";
-            for ($i=1; $i <= $pages; $i++)
-            {
-                if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
-                {
+            for ($i=1; $i <= $pages; $i++){
+                if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )){
                     echo ($paged == $i)? "<li class=\"page-item active\"><a class='page-link'>".$i."</a></li>":"<li class='page-item'> <a href='".get_pagenum_link($i)."' class=\"page-link\">".$i."</a></li>";
                 }
             }
@@ -120,4 +106,4 @@ function scripts(){
         }
   	}
 
-  	//******************** EOF Pagination Section ********************//
+  	//******************** Custom pagination function ********************//

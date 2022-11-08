@@ -580,7 +580,7 @@ footer{
 
 .breadcrumbs{
 	padding: 8px 0;
-	margin-bottom: 24px;
+	margin-bottom: 15px;
 }
 
 .breadcrumbs a{
@@ -1320,8 +1320,16 @@ footer{
 .related-thumbnail.listing-shop-boxs a.shops-box .shops-name{
 	padding-bottom: 26px;
 }
-
 /*========== EOF Shopes Detail page ==========*/
+
+/*========== Weather Page ==========*/
+#map{
+  height: 500px;
+  width: 100%;
+  margin: 35px 0;
+}
+/*========== EOF Weather Page ==========*/
+
 
 /*========== 404 Page ==========*/
 /*========== EOF 404 Page ==========*/
